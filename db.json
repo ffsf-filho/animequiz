@@ -1,0 +1,33 @@
+{
+    "bg": "https://articles.gamerheadquarters.com/images/top10/movies/10.jpg",
+    "Title": "Anime Quiz",
+    "description": "Mostre o quanto você sabe sobre animes",
+    "question": [
+        {
+            "image": "https://placehold.it/400x400",
+            "title": "Questão numero 01",
+            "description": "Descrição da questão numero #01",
+            "answer": 1,
+            "Alternatives": [
+                "Alternativa A",
+                "Alternativa B",
+                "Alternativa C",
+                "Alternativa D"
+            ]
+        }
+    ],
+    "external": [
+        "https://aluraquiz-v2.omariosouto.vercel.app/"
+    ],
+    "theme": {
+        "colors": {
+            "primary": "#4CAF50",
+            "secundary": "#FF9800",
+            "mainBg": "#1C1814",
+            "contrastText": "#FFFFFF",
+            "wrong": "#FF5722",
+            "success": "4CAF50"
+        },
+        "borderRadius": "4px"
+    }
+}
