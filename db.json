@@ -1,18 +1,151 @@
 {
-    "bg": "https://articles.gamerheadquarters.com/images/top10/movies/10.jpg",
+    "bg": "/image/backgroundimage.jpg",
+    "bgAlura": "https://articles.gamerheadquarters.com/images/top10/movies/10.jpg",
     "Title": "Anime Quiz",
-    "description": "Mostre o quanto você sabe sobre animes",
-    "question": [
+    "description": "Mostre o quanto você sabe destes animes",
+    "questions": [
         {
-            "image": "https://placehold.it/400x400",
-            "title": "Questão numero 01",
-            "description": "Descrição da questão numero #01",
+            "image": "/image/dragonballz.jpg",
+            "title": "Questão 1",
+            "description": "Quem matou definitivamente Freeza quando ele veio à Terra?",
             "answer": 1,
-            "Alternatives": [
-                "Alternativa A",
-                "Alternativa B",
-                "Alternativa C",
-                "Alternativa D"
+            "alternatives": [
+                "Goku",
+                "Trunks do Futuro",
+                "Vegeta",
+                "Gohan"
+            ]
+        },
+        {
+            "image": "/image/yuyuhakusho.jpg",
+            "title": "Questão 2",
+            "description": "Quem criou Yu Yu Hakusho?",
+            "answer": 0,
+            "alternatives": [                
+                "Yoshihiro Togashi",
+                "Akira Toriyama",
+                "Masashi Kishimoto",
+                "Masami Kurumada"
+            ]
+        },
+        {
+            "image": "/image/cavaleirosdozodiaco.jpg",
+            "title": "Questão 3",
+            "description": "Qual Cavaleiro de Bronze derrotou Shaka de Virgem na Batalha das Doze Casas?",
+            "answer": 3,
+            "alternatives": [
+                "Seiya de Pégaso",
+                "Marin de Águia",
+                "Shiryu de Dragão",
+                "Ikki de Fênix"
+            ]
+        },
+        {
+            "image": "/image/dragonballz.jpg",
+            "title": "Questão 4",
+            "description": "Qual esfera do dragão Goku possuia no início do Dragon Ball Clássico?",
+            "answer": 2,
+            "alternatives": [
+                "Esfera do Dragão de 1 estrelas",
+                "Esfera do Dragão de 3 estrelas",
+                "Esfera do Dragão de 4 estrelas",
+                "Esfera do Dragão de 7 estrelas"
+            ]
+        },
+        {
+            "image": "/image/yuyuhakusho.jpg",
+            "title": "Questão 5",
+            "description": "Como Yusuke morreu no começo do Anime?",
+            "answer": 1,
+            "alternatives": [
+                "Pulou de Uma Ponte",                
+                "Se jogou na frente de um carro para salvar uma criança",
+                "Doença Terminal",
+                "Numa briga de gangues"
+            ]
+        },
+        {
+            "image": "/image/cavaleirosdozodiaco.jpg",
+            "title": "Questão 6",
+            "description": "Quem é o Cavaleiro de Libra?",
+            "answer": 2,
+            "alternatives": [
+                "Aiolos",
+                "Shion",
+                "Mestre Ancião",
+                "Kanon"
+            ]
+        },
+        {
+            "image": "/image/dragonballz.jpg",
+            "title": "Questão 7",
+            "description": "Quem derrotou Super Buu com Gohan absorvido?",
+            "answer": 3,
+            "alternatives": [
+                "Goku",
+                "Vegeta",
+                "Gogeta",
+                "Vegetto"
+            ]
+        },
+        {
+            "image": "/image/yuyuhakusho.jpg",
+            "title": "Questão 8",
+            "description": "Qual titulo Yusuke recebe no começo do Anime?",
+            "answer": 0,
+            "alternatives": [
+                "Detetive Sobrenatural",
+                "Agente do Mundo Espiritual",
+                "Policial do Outro Mundo",
+                "Investigador das Trevas"
+            ]
+        },
+        {
+            "image": "/image/cavaleirosdozodiaco.jpg",
+            "title": "Questão 9",
+            "description": "Contra quem Shiryu de Dragão usou o golpe Último Dragão?",
+            "answer": 0,
+            "alternatives": [
+                "Shura de Capricórnio",
+                "Mascára da Morte de Câncer",
+                "Milo de Escorpião",
+                "Camus de Aquário"
+            ]
+        },
+        {
+            "image": "/image/dragonballz.jpg",
+            "title": "Questão 10",
+            "description": "Quem fez e qual foi o primeiro pedido feito as esferas do dragão que foi mostrado na série?",
+            "answer": 0,
+            "alternatives": [                
+                "Oolong, pediu uma calcinha da Bulma",
+                "Bulma, pediu um namorado",
+                "Goku, pediu comida",
+                "Goku, pediu para reviver o Kuririn"
+            ]
+        },
+        {
+            "image": "/image/yuyuhakusho.jpg",
+            "title": "Questão 11",
+            "description": "Qual o apelido pelo qual Shinobu Sensui é conhecido?",
+            "answer": 2,
+            "alternatives": [
+                "Anjo da Morte",
+                "Arcanjo",
+                "Anjo Negro",
+                "Arcanjo Renegado"
+            ]
+        },
+        {
+            "image": "/image/cavaleirosdozodiaco.jpg",
+            "title": "Questão 12",
+            "description": "Qual era o golpe proibido por Atena?",
+            "answer": 1,
+            "alternatives": [
+                "Explosão Galática",
+                "Exclamação de Atena",
+                "Relâmpago de Plasma",
+                "Revolução Estelar"
             ]
         }
     ],
@@ -25,6 +158,8 @@
             "secundary": "#FF9800",
             "mainBg": "#1C1814",
             "contrastText": "#FFFFFF",
+            "contrastGit": "#d7ccc8",
+            "colorGit": "#dd2c00",
             "wrong": "#FF5722",
             "success": "4CAF50"
         },
