@@ -7,8 +7,9 @@ export default function QuizDaGaleraPage({ dbExterno }){
         <div>
             <ThemeProvider theme={dbExterno.theme}>
                 <QuizScreen 
-                    externalQuestions={dbExterno.questions}
-                    externalBg={dbExterno.bg}
+                    db={dbExterno}
+                    /* externalQuestions={dbExterno.questions}
+                    externalBg={dbExterno.bg} */
                     />
             </ThemeProvider>
             {/* <pre style={{ color: 'black' }}>
@@ -20,6 +21,7 @@ export default function QuizDaGaleraPage({ dbExterno }){
 
 export async function getServerSideProps(context) {
     const [projectName, githubUser] = context.query.id.split('___');
+
     try{
         const dbExterno = await fetch(`https://${projectName}.${githubUser}.vercel.app/api/db`)
         .then((respostaDoServidor) => {

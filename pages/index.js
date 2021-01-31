@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components';
 import { motion, moton } from 'framer-motion';
 import { useRouter } from 'next/router';
 import db from '../db.json';
@@ -13,10 +12,11 @@ import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 import QuizContainer from '../src/components/QuizContainer';
 
+
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
-
+  let item = 0;
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -44,10 +44,10 @@ export default function Home() {
             <Input 
               name="nomeDoUsuario"
               onChange={(infosDoEvento) => { setName(infosDoEvento.target.value);}}
-              placeholder="Diz o seu nome" 
+              placeholder="Diz o seu nome para desbloquear..." 
               value={name}
             />
-            <Button type="submit" disabled={name.length === 0 }>
+            <Button type="submit" disabled={name.trim().length === 0 }>
               {`Jogar ${name}`}
             </Button>
             </form>
@@ -65,24 +65,33 @@ export default function Home() {
           initial="hidden"
           animate= "show"                
         >
-          <Widget.Content>
+          <Widget.Header>
             <h1>Quizes da Galera</h1>
+          </Widget.Header>
+          <Widget.Content>
             <ul>
-              {db.external.map((linkExterno) => {
-                const [projectName, githubUser] = linkExterno
-                .replace(/\//g, '')
-                .replace('https:', '')
-                .replace('.vercel.app', '')
-                .split('.');
+              <Widget.Scroll>
+                {db.external.map((linkExterno) => {
+                  const [projectName, githubUser] = linkExterno
+                  .replace(/\//g, '')
+                  .replace('https:', '')
+                  .replace('.vercel.app', '')
+                  .split('.');
 
-                return (
-                  <li key={linkExterno}>
-                    <Widget.Topic as={Link} href={`/quiz/${projectName}___${githubUser}`}>
-                      {`${githubUser}/${projectName}`}
-                    </Widget.Topic>
-                  </li>
-                );
-              })}
+                  return (
+                    <li key={linkExterno}>
+                      <Link href={`/quiz/${projectName}___${githubUser}?name=${name}`} passhref>
+                        <Widget.Topic 
+                          as="button"  
+                          disabled={name.trim().length === 0 }
+                        >
+                          {`${++item} - ${githubUser} / ${projectName}`}
+                        </Widget.Topic>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </Widget.Scroll>
             </ul>
             </Widget.Content>
         </Widget>

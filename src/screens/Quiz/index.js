@@ -1,4 +1,7 @@
 import React from 'react'
+import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import Widget from '../../components/Widget';
 import QuizLogo from '../../components/QuizLogo';
 import QuizBackground from '../../components/QuizBackground';
@@ -10,62 +13,52 @@ import GitHubCorner from '../../components/GitHubCorner';
 import LoadingWidget from '../../components/LoadingWidget';
 import BackLinkArrow from '../../components/BackLinkArrow';
 
-/* function LoadingWidget(){
-    return(
-        <Widget>
-            <Widget.Header>
-                Carregando... 
-            </Widget.Header>
-            <Widget.Content>
-                [Desafio do Loading]
-            </Widget.Content>
-        </Widget>
-    );
-}; */
-
 function ResultWidget({ results }) {
+    const router = useRouter();
+    const { name } = router.query;
     const totalAcertos = results.filter((x) => x).length;
 
     return(
-        <Widget>
+        <Widget
+            as={motion.section}
+            transition={{ dalay: 1, duration: 1.5 }}
+            variants={{
+            show: { opacity: 1, y: '0' },
+            hidden: { opacity: 0, y: '100%' },
+        }}
+
+        initial="hidden"
+        animate= "show" 
+        >
             <Widget.Header>
+                <BackLinkArrow href="/" />
                 Tela de Resultado
             </Widget.Header>
-        <Widget.Content>
-            <p>
-                Você acertou 
-                { ' ' }
-                
-                {/* {
-                    results.reduce((somatoriaAtual, resultAtual) => {
-                        const isAcerto = resultAtual === true;
+            <Widget.Content>
+                <p>
+                    <b>{`${name.trim().toUpperCase()}`}</b> 
+                    {`${totalAcertos === 0 ? ' que pena, tente outra vez!!' : ' mandou muito bem!!'}`}
+                </p>
+                <p>
+                    {totalAcertos === 0 ? 'Você errou todas.' : `Você acertou ${totalAcertos} pergunta(s), parabéns!`}
+                </p>
 
-                        if(isAcerto) {
-                            return somatoriaAtual + 1;
-                        }
-                        return somatoriaAtual;
-                    })
-                } */}
-                {totalAcertos}
-                { ' ' }
-                perguntas, parabéns !
-            </p>
+                <ul>
+                    {
+                        results.map((result, index) => (
+                            <li key={`result__${index}`}>
+                                {`# ${index + 1} `} Resultado:
+                                {result === true ? ' Acertou' : ' Errou'}
+                            </li>
+                        ))
+                    }
+                </ul>
 
-            <ul>
-                {
-                    results.map((result, index) => (
-                        <li key={`result__${index}`}>
-                            {`# ${index + 1} `} Resultado:
-                            {result === true ? ' Acertou' : ' Errou'}
-                        </li>
-                    ))
-                }
-            </ul>
+                <p>
+                    {`Você fez ${(100 * totalAcertos)} pontos.`}
+                </p>
 
-            <p>
-                {`Você vez ${(100 * totalAcertos)} pontos.`}
-            </p>
-        </Widget.Content>
+            </Widget.Content>
     </Widget>
     );
 };
@@ -109,11 +102,11 @@ function QuestionWidget({question, totalQuestions, questionIndex, onSubmit, addR
                         onSubmit();
                         setIsQuestionSubmited(false);
                         setSelectedAlternative(undefined);
-                    }, 3000);
+                    }, 2 * 1000);
                 }}
             >
                 {question.alternatives.map((alternative, alternativeIndex) => {
-                    const alternativeId = `alternative_${alternativeIndex}`;
+                    const alternativeId = `alternative_${alternativeIndex}--${alternative}`;
                     const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
                     const isSelected =  selectedAlternative === alternativeIndex;
 
@@ -158,14 +151,14 @@ const screenStates = {
     RESULT: 'RESULT',
 };
 
-export default function QuizPage( {externalQuestions, externalBg}) {
+export default function QuizPage( {db} ) {
     const [screenState, setScreenState] = React.useState(screenStates.LOADING);
     const [results, setResults] = React.useState([]);
-    const totalQuestions = externalQuestions.length;
+    const totalQuestions = db.questions.length;
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const questionIndex = currentQuestion;
-    const question = externalQuestions[questionIndex];
-    const bg = externalBg;
+    const question = db.questions[questionIndex];
+    const bg = db.bg;
 
     function addResult(result) {
         setResults([
@@ -214,3 +207,7 @@ export default function QuizPage( {externalQuestions, externalBg}) {
         </QuizBackground>
     );
 }
+
+ResultWidget.propTypes = {
+    results: PropTypes.arrayOf(PropTypes.bool).isRequired,
+};
