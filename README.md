@@ -17,7 +17,7 @@ Content
 
 ## About
 ### This is @ ffsf-filho's  project for React NextJS Imersion(Alura)
-### The project is an quiz about Flash
+### The project is an quiz about Anime
 
 </div>
 
